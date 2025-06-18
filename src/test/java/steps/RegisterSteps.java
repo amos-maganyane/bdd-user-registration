@@ -1,13 +1,18 @@
 package steps;
 
 import io.cucumber.java.en.*;
+import io.restassured.response.Response;
 import utils.ConfigManager;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static io.restassured.RestAssured.*;
 
 
 public class RegisterSteps {
     private static final String BASE_URL = ConfigManager.getBaseUrl();
+    Response response;
 
     @Given("the registration API is available")
     public void the_registration_api_is_available() {
@@ -16,9 +21,19 @@ public class RegisterSteps {
 
     @When("I register with name {string} and password {string}")
     public void i_register_with_name_and_password(String name, String password) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
+        Map<String, String> requestBody = new HashMap<>();
+
+        if (!name.isEmpty()) requestBody.put("name", name);
+        if (!password.isEmpty()) requestBody.put("password", password);
+
+        response = given()
+                .contentType("application/json")
+                .body(requestBody)
+                .when()
+                .post("/register");
     }
+
     @Then("the response status code should be {int}")
     public void the_response_status_code_should_be(int statusCode) {
         // Write code here that turns the phrase above into concrete actions
