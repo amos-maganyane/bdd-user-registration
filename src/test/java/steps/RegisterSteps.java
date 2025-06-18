@@ -9,6 +9,7 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.notNullValue;
 
 
@@ -48,8 +49,8 @@ public class RegisterSteps {
 
     @Then("the response should contain error {string}")
     public void the_response_should_contain_error(String expectedError) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        String actualError = response.jsonPath().getString("error");
+        assertThat(actualError, containsString(expectedError));
     }
 
 }
