@@ -8,4 +8,19 @@
     <artifactId>user-registration-app-bdd</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.23.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-api</artifactId>
+            <version>1.13.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
 </project>
