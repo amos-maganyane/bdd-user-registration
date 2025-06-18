@@ -1,1 +1,0 @@
-# bdd-user-registration
