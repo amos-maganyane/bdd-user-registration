@@ -1,17 +1,17 @@
 package steps;
 
 import io.cucumber.java.en.*;
+import utils.ConfigManager;
 
 import static io.restassured.RestAssured.*;
 
 
 public class RegisterSteps {
-
-    String url = "http://localhost:5000";
+    private static final String BASE_URL = ConfigManager.getBaseUrl();
 
     @Given("the registration API is available")
     public void the_registration_api_is_available() {
-        baseURI = url;
+        baseURI = BASE_URL;
     }
 
     @When("I register with name {string} and password {string}")
