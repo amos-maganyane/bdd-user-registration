@@ -2,13 +2,18 @@ package steps;
 
 import io.cucumber.java.en.*;
 
+import static io.restassured.RestAssured.*;
+
+
 public class RegisterSteps {
+
+    String url = "http://localhost:5000";
 
     @Given("the registration API is available")
     public void the_registration_api_is_available() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        baseURI = url;
     }
+
     @When("I register with name {string} and password {string}")
     public void i_register_with_name_and_password(String name, String password) {
         // Write code here that turns the phrase above into concrete actions
