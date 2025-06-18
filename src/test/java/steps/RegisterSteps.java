@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.notNullValue;
 
 
 public class RegisterSteps {
@@ -41,8 +43,7 @@ public class RegisterSteps {
 
     @Then("the response should contain a user ID")
     public void the_response_should_contain_a_user_id() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        assertThat(response.jsonPath().get("id"), notNullValue());
     }
 
     @Then("the response should contain error {string}")
