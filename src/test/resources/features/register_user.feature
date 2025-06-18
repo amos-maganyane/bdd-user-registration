@@ -12,3 +12,8 @@ Feature: User Registration
     When I register with name "" and password "strongpass"
     Then the response status code should be 400
     And the response should contain error "Missing name"
+
+  Scenario:  Registration with weak password
+    When I register with name "Amos" and password "123"
+    Then the response status code should be 400
+    And the response should contain error "Password too short"
